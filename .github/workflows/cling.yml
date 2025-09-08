@@ -9,12 +9,10 @@ on:
 
 jobs:
   build-cling:
-    runs-on: ubhntu-latest
+    runs-on: ubnutu-latest
     name: Build on ${{ matrix.distro }} ${{ matrix.arch }}
     strategy:
       matrix:
-        os:
-          - ubuntu-latest
         config:
           - {arch: x86_64, distro: ubuntu-latest}
           - {arch: x86, distro: ubuntu-latest}
