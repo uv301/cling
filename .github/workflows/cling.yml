@@ -44,7 +44,7 @@ jobs:
 
       - name: Configure
         working-directory: build
-        run: cmake -DLLVM_EXTERNAL_PROJECTS=cling -DLLVM_EXTERNAL_CLING_SOURCE_DIR=../cling/ -DLLVM_ENABLE_PROJECTS="clang" -DLLVM_TARGETS_TO_BUILD="host;NVPTX" -DCMAKE_BUILD_TYPE=Release ../llvm/llvm/
+        run: cmake -DLLVM_EXTERNAL_PROJECTS=cling -DLLVM_EXTERNAL_CLING_SOURCE_DIR=../cling/ -DLLVM_ENABLE_PROJECTS="clang" -DLLVM_TARGETS_TO_BUILD="${{ matrix.config.arch }};NVPTX" -DCMAKE_BUILD_TYPE=Release ../llvm/llvm/
 
       - name: Build
         working-directory: build
@@ -58,7 +58,7 @@ jobs:
         uses: actions/upload-artifact@v4.6.2
         with:
     # Artifact name
-          #name: # optional, default is artifact
+          name: cling-${{ matrix.config.arch }}
     # A file, directory or wildcard pattern that describes what to upload
           path: build
     # The desired behavior if no files are found using the provided path.
