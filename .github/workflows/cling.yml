@@ -23,6 +23,17 @@ jobs:
           - {arch: riscv64, branch: edge}
           - {arch: s390x, branch: latest-stable}
     steps:
+      - name: Setup Alpine Linux
+        uses: jirutka/setup-alpine@v1
+        with:
+          arch: ${{ matrix.config.arch }}
+          branch: ${{ matrix.config.branch }}
+        
+      - name: Install deps
+        shell: alpine.sh --root {0}
+        run: |
+          apk update && apk add cmake gcc g++ make libedit
+        
       - name: Checkout LLVM
         uses: actions/checkout@v4
         with:
@@ -43,10 +54,12 @@ jobs:
           mkdir build
 
       - name: Configure
+        shell: alpine.sh {0}
         working-directory: build
-        run: cmake -DLLVM_EXTERNAL_PROJECTS=cling -DLLVM_EXTERNAL_CLING_SOURCE_DIR=../cling/ -DLLVM_ENABLE_PROJECTS="clang" -DLLVM_TARGETS_TO_BUILD="${{ matrix.config.arch }};NVPTX" -DCMAKE_BUILD_TYPE=Release ../llvm/llvm/
+        run: cmake -DLLVM_EXTERNAL_PROJECTS=cling -DLLVM_EXTERNAL_CLING_SOURCE_DIR=../cling/ -DLLVM_ENABLE_PROJECTS="clang" -DLLVM_TARGETS_TO_BUILD="host;NVPTX" -DCMAKE_BUILD_TYPE=Release ../llvm/llvm/
 
       - name: Build
+        shell: alpine.sh {0}
         working-directory: build
         run: cmake --build . --parallel 4 --target cling
 
