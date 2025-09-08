@@ -13,7 +13,7 @@ jobs:
     name: Build on ${{ matrix.distro }} ${{ matrix.arch }}
     strategy:
       matrix:
-        config:
+        include:
           - {arch: x86_64, distro: ubuntu-latest}
           - {arch: x86, distro: ubuntu-latest}
           - {arch: aarch64, distro: ubuntu-latest}
