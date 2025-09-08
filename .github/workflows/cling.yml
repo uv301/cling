@@ -8,8 +8,9 @@ on:
   release:
 
 jobs:
-  build-and-test:
+  build-cling:
     runs-on: ubhntu-22.04
+    name: Build on ${{ matrix.distro }} ${{ matrix.arch }}
     strategy:
       matrix:
         os:
