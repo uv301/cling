@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-cling:
-    runs-on: ubnutu-latest
+    runs-on: ubuntu-latest
     name: Build on ${{ matrix.distro }} ${{ matrix.arch }}
     strategy:
       matrix:
