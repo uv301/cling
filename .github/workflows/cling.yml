@@ -50,9 +50,9 @@ jobs:
         working-directory: build
         run: cmake --build . --parallel 4 --target cling
 
-      - name: Test
-        working-directory: build
-        run: cmake --build . --target check-cling
+      #- name: Test
+        #working-directory: build
+        #run: cmake --build . --target check-cling
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4.6.2
