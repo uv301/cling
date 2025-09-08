@@ -50,7 +50,7 @@ jobs:
         with:
           arch: ${{ matrix.arch }}
           distro: ${{ matrix.distro }}
-          githubToken: ${{ github.token }}
+          #githubToken: ${{ github.token }}
           env: | # YAML, but pipe character is necessary
             artifact_name: cling-${{ matrix.distro }}_${{ matrix.arch }}
           setup: |
