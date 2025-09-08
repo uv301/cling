@@ -5,6 +5,7 @@ on:
     paths:
       - '**'
   workflow_dispatch:
+  release:
 
 jobs:
   build-and-test:
@@ -32,7 +33,7 @@ jobs:
       - name: Install deps
         shell: alpine.sh --root {0}
         run: |
-          apk update && apk add cmake gcc g++ make libedit
+          apk update && apk add cmake gcc g++ make libedit python3
         
       - name: Checkout LLVM
         uses: actions/checkout@v4
