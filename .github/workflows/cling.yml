@@ -9,21 +9,21 @@ on:
 
 jobs:
   build-cling:
-    runs-on: ubhntu-22.04
+    runs-on: ubhntu-latest
     name: Build on ${{ matrix.distro }} ${{ matrix.arch }}
     strategy:
       matrix:
         os:
           - ubuntu-latest
         config:
-          - {arch: x86_64, distro: ubuntu-22.04}
-          - {arch: x86, distro: ubuntu-22.04}
-          - {arch: aarch64, distro: ubuntu-22.04}
-          - {arch: armhf, distro: ubuntu-22.04}
-          - {arch: armv7, distro: ubuntu-22.04}
-          - {arch: ppc64le, distro: ubuntu-22.04}
-          - {arch: riscv64, distro: ubuntu-22.04}
-          - {arch: s390x, distro: ubuntu-22.04}
+          - {arch: x86_64, distro: ubuntu-latest}
+          - {arch: x86, distro: ubuntu-latest}
+          - {arch: aarch64, distro: ubuntu-latest}
+          - {arch: armhf, distro: ubuntu-latest}
+          - {arch: armv7, distro: ubuntu-latest}
+          - {arch: ppc64le, distro: ubuntu-latest}
+          - {arch: riscv64, distro: ubuntu-latest}
+          - {arch: s390x, distro: ubuntu-latest}
     steps:
       - name: Checkout LLVM
         uses: actions/checkout@v4
