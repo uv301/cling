@@ -43,7 +43,7 @@ jobs:
           mkdir build
 
       - name: Build
-        uses: uarimo/run-on-arch-action@v3
+        uses: uraimo/run-on-arch-action@v3
         id: build
         with:
           arch: ${{ matrix.arch }}
