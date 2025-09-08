@@ -33,7 +33,7 @@ jobs:
       - name: Install deps
         shell: alpine.sh --root {0}
         run: |
-          apk update && apk add cmake gcc g++ make libedit python3
+          apk update && apk add cmake gcc g++ make libedit python3 ocaml-compiler-libs
         
       - name: Checkout LLVM
         uses: actions/checkout@v4
