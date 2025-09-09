@@ -59,7 +59,7 @@ jobs:
           run: |
             mkdir -p "/artifacts/${artifact_name}"
             PWD=/build cmake -DLLVM_EXTERNAL_PROJECTS=cling -DLLVM_EXTERNAL_CLING_SOURCE_DIR=/cling/ -DLLVM_ENABLE_PROJECTS="clang" -DLLVM_TARGETS_TO_BUILD="host;NVPTX" -DCMAKE_BUILD_TYPE=Release /llvm/llvm/
-            PWD=/artifacts/${artifact_name} cmake --build /tmp/build --parallel 4 --target cling
+            PWD=/artifacts/${artifact_name} cmake --build /build --parallel 4 --target cling
             echo "Produced artifact at ${ls -lah /artifacts/${artifact_name}/}"
           
       #- name: Test
